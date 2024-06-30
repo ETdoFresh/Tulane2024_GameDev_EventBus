@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Event Bus Lecture</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .slide { display: none; padding: 20px; width: 100vw; height: 100vh; box-sizing: border-box; position: relative; }
+        .active { display: block; }
+        .slide-number { position: absolute; bottom: 10px; right: 10px; font-size: 24px; color: #333; }
+        .centered {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+            font-size: 48px;
+        }
+        h1, h2 { font-size: 56px; }
+        p, li { font-size: 36px; }
+        ul { padding-left: 40px; }
+    </style>
+</head>
+<body>
+    <div id="slides">
+        <div class="slide active" id="slide1">
+            <div class="centered">
+                <div>
+                    <h1>Unity Event Bus Lecture</h1>
+                    <p>Presented by: Edward (E.T) Garcia</p>
+                </div>
+            </div>
+            <div class="slide-number">1/11</div>
+        </div>
+        <div class="slide" id="slide2">
+            <h2>Course Information</h2>
+            <ul>
+                <li><strong>Course Name:</strong> Game Programming</li>
+                <li><strong>Course Number:</strong> CMPS-6180-01</li>
+                <li><strong>CRN:</strong> 20733</li>
+                <li><strong>Instructors:</strong> Shihran Joudeh, Ali Raza</li>
+                <li><strong>Credit Hours:</strong> 3</li>
+                <li><strong>Type:</strong> Online Course</li>
+                <li><strong>Schedule:</strong> Mondays</li>
+                <li><strong>Time:</strong> 06:00PM - 07:30PM</li>
+                <li><strong>Dates:</strong> 05/20/2024 - 08/09/2024</li>
+                <li><strong>Max Seats:</strong> 25</li>
+                <li><strong>Available Seats:</strong> 17</li>
+                <li><strong>Campus:</strong> Distance Learning</li>
+                <li><strong>Part of Term:</strong> Special Offering</li>
+                <li><strong>Eligibility:</strong> Open to Graduate Students</li>
+                <li><strong>Wait List:</strong> N/A</li>
+                <li><strong>University:</strong> Tulane University</li>
+            </ul>
+            <p>These slides were prepared for Tulane University's Game Programming course.</p>
+            <div class="slide-number">2/11</div>
+        </div>
+        <div class="slide" id="slide3">
+            <h2>Introduction</h2>
+            <ul>
+                <li>Background: 3 years at Pixeldash</li>
+                <li>Education: 5 years of Computer Science graduate work at UNO</li>
+                <li>Indie game development since 2014</li>
+                <li>Overview of event-driven programming</li>
+                <li>What is an event bus and its role in game development</li>
+            </ul>
+            <div class="slide-number">3/11</div>
+        </div>
+        <div class="slide" id="slide4">
+            <h2>Unity Persistent Event Listeners</h2>
+            <ul>
+                <li><strong>What are persistent event listeners?</strong></li>
+                <p>Persistent event listeners in Unity are event listeners that remain attached to events even after the application is stopped and restarted. They are serialized with the GameObject and allow you to define event responses directly in the Unity Editor without needing to write additional code.</p>
+                
+                <li><strong>How to add them in Unity?</strong></li>
+                <ul>
+                    <li>Select the GameObject that has the component with the event you want to listen to.</li>
+                    <li>In the Inspector, find the component that contains the event (e.g., Button component for UI Buttons).</li>
+                    <li>Click the plus (+) button at the bottom of the event's listener list to add a new listener.</li>
+                    <li>Assign the target object and method to be called when the event is triggered.</li>
+                </ul>
+                
+                <li><strong>Use cases and benefits:</strong></li>
+                <ul>
+                    <li><strong>Use Cases:</strong></li>
+                    <ul>
+                        <li>Setting up UI interactions, such as buttons triggering specific actions.</li>
+                        <li>Connecting different components in a scene, like triggering animations or audio effects when certain events occur.</li>
+                        <li>Simplifying the process of attaching and configuring event responses during development and design phases.</li>
+                    </ul>
+                    <li><strong>Benefits:</strong></li>
+                    <ul>
+                        <li>Improves workflow by allowing designers to set up event responses without writing code.</li>
+                        <li>Reduces the likelihood of runtime errors since event connections are defined in the Editor.</li>
+                        <li>Provides a visual representation of event connections, making it easier to manage and debug complex interactions.</li>
+                    </ul>
+                </ul>
+            </ul>
+            <div class="slide-number">4/11</div>
+        </div>
+        <div class="slide" id="slide5">
+            <h2>Methods to Implement Events</h2>
+            <ul>
+                <li><strong>Direct Events:</strong></li>
+                <p>Direct connections between event sources and listeners, where the source calls specific methods on the listeners.</p>
+                <li><strong>Global Event List:</strong></li>
+                <p>A centralized list of events that listeners can subscribe to and sources can publish to, allowing for decoupling but requiring more management.</p>
+                <li><strong>Event Bus:</strong></li>
+                <p>A more advanced system that decouples sources and listeners completely, centralizing the event management and improving scalability and maintainability.</p>
+            </ul>
+            <div class="slide-number">5/11</div>
+        </div>
+        <div class="slide" id="slide6">
+            <h2>Event Bus vs. Direct Events</h2>
+            <ul>
+                <li><strong>Traditional event system: Pros and cons</strong></li>
+                <ul>
+                    <li><strong>Pros:</strong></li>
+                    <ul>
+                        <li>Simple to implement and understand.</li>
+                        <li>Direct connections between event sources and listeners.</li>
+                        <li>Useful for straightforward event handling scenarios.</li>
+                    </ul>
+                    <li><strong>Cons:</strong></li>
+                    <ul>
+                        <li>Can lead to tightly coupled code, making maintenance difficult.</li>
+                        <li>Hard to manage in large projects with many events and listeners.</li>
+                        <li>Changes to event sources can require changes to multiple listeners.</li>
+                    </ul>
+                </ul>
+                
+                <li><strong>Event bus system: Pros and cons</strong></li>
+                <ul>
+                    <li><strong>Pros:</strong></li>
+                    <ul>
+                        <li>Decouples event sources and listeners, improving maintainability.</li>
+                        <li>Centralized management of events, making it easier to track and debug.</li>
+                        <li>Scales better for large projects with many events and listeners.</li>
+                    </ul>
+                    <li><strong>Cons:</strong></li>
+                    <ul>
+                        <li>Can be more complex to implement initially.</li>
+                        <li>Adds an additional layer of abstraction, which can be confusing for beginners.</li>
+                        <li>Potential performance overhead if not implemented efficiently.</li>
+                    </ul>
+                </ul>
+                
+                <li><strong>Reducing coupling: How an event bus decouples classes</strong></li>
+                <p>An event bus acts as an intermediary that handles the registration and dispatching of events.</p>
+                <p>Event sources post events to the bus without knowing who will handle them.</p>
+                <p>Event listeners subscribe to the bus and react to events without knowing their sources.</p>
+                <p>This separation allows for greater flexibility and easier refactoring since event sources and listeners don't need to be directly aware of each other.</p>
+            </ul>
+            <div class="slide-number">6/11</div>
+        </div>
+        <div class="slide" id="slide7">
+            <h2>Implementing a Basic Event Bus in Unity</h2>
+            <ul>
+                <li>Core components of an event bus</li>
+                <li>Code example of a simple event bus</li>
+            </ul>
+            <div class="slide-number">7/11</div>
+        </div>
+        <div class="slide" id="slide8">
+            <h2>BindableData Element</h2>
+            <ul>
+                <li>Introduction to BindableData</li>
+                <li>Implementation details</li>
+                <li>Use cases and best practices</li>
+            </ul>
+            <div class="slide-number">8/11</div>
+        </div>
+        <div class="slide" id="slide9">
+            <h2>Event Bus Debugger using Reflection</h2>
+            <ul>
+                <li>Introduction to reflection in C#</li>
+                <li>Building a simple event bus debugger</li>
+                <li>Demonstrating its utility in development</li>
+            </ul>
+            <div class="slide-number">9/11</div>
+        </div>
+        <div class="slide" id="slide10">
+            <h2>Common Pitfalls and Best Practices</h2>
+            <ul>
+                <li>Multiple Sources of Truth</li>
+                <li>Orchestration Issues</li>
+                <li>Missed Events</li>
+                <li>Event chains: What they are and why they're problematic</li>
+                <li>Using a manager as a listener to avoid event chains</li>
+                <li>Other best practices and design considerations</li>
+            </ul>
+            <div class="slide-number">10/11</div>
+        </div>
+        <div class="slide" id="slide11">
+            <h2>Q&A Session</h2>
+            <p>Open floor for questions from students.</p>
+            <div class="slide-number">11/11</div>
+        </div>
+    </div>
+    <script>
+        let currentSlide = 1;
+        const slides = document.querySelectorAll('.slide');
+        let mouseDownTime = 0;
+
+        function showSlide(n) {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === n - 1) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        document.addEventListener('mousedown', () => {
+            mouseDownTime = Date.now();
+        });
+
+        document.addEventListener('mouseup', (event) => {
+            const mouseUpTime = Date.now();
+            if (mouseUpTime - mouseDownTime < 1000) {
+                if (event.button === 0) { // Left click
+                    nextSlide();
+                } else if (event.button === 2) { // Right click
+                    prevSlide();
+                }
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') {
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        document.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>
