@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Utility;
 
 namespace _2_GlobalEventList
 {
@@ -8,12 +9,12 @@ namespace _2_GlobalEventList
         
         private void OnEnable()
         {
-            GlobalEventList.Instance.CoinCollected.AddListener(OnCoinCollected);
+            GlobalEventList.Instance.CoinCollected.AddPersistentListener(OnCoinCollected);
         }
         
         private void OnDisable()
         {
-            GlobalEventList.Instance?.CoinCollected.RemoveListener(OnCoinCollected);
+            GlobalEventList.Instance?.CoinCollected.RemovePersistentListener(OnCoinCollected);
         }
         
         private void OnCoinCollected(Vector3 position)
