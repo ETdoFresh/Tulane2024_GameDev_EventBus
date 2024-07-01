@@ -1,11 +1,13 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 namespace _2_GlobalEventList
 {
-    public class CoinSFXBehaviour : MonoBehaviour
+    public class CoinUIBehaviour2 : MonoBehaviour
     {
-        [SerializeField] private AudioSource coinSFX;
-        
+        [SerializeField] private TMP_Text coinText;
+        private int _collectedCoins;
+
         private void OnEnable()
         {
             GlobalEventList.Instance.CoinCollected.AddListener(OnCoinCollected);
@@ -15,10 +17,10 @@ namespace _2_GlobalEventList
         {
             GlobalEventList.Instance?.CoinCollected.RemoveListener(OnCoinCollected);
         }
-        
+
         private void OnCoinCollected(Vector3 position)
         {
-            coinSFX.Play();
+            coinText.text = $"Coins: {++_collectedCoins}";
         }
     }
 }

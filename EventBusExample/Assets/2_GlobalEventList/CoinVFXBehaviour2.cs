@@ -1,13 +1,11 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace _2_GlobalEventList
 {
-    public class CoinUIBehaviour : MonoBehaviour
+    public class CoinVFXBehaviour2 : MonoBehaviour
     {
-        [SerializeField] private TMP_Text coinText;
-        private int _collectedCoins;
-
+        [SerializeField] private ParticleSystem coinVFX;
+        
         private void OnEnable()
         {
             GlobalEventList.Instance.CoinCollected.AddListener(OnCoinCollected);
@@ -17,10 +15,11 @@ namespace _2_GlobalEventList
         {
             GlobalEventList.Instance?.CoinCollected.RemoveListener(OnCoinCollected);
         }
-
+        
         private void OnCoinCollected(Vector3 position)
         {
-            coinText.text = $"Coins: {++_collectedCoins}";
+            transform.position = position;
+            coinVFX.Play();
         }
     }
 }

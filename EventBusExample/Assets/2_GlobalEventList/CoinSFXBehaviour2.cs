@@ -2,9 +2,9 @@
 
 namespace _2_GlobalEventList
 {
-    public class CoinVFXBehaviour : MonoBehaviour
+    public class CoinSFXBehaviour2 : MonoBehaviour
     {
-        [SerializeField] private ParticleSystem coinVFX;
+        [SerializeField] private AudioSource coinSFX;
         
         private void OnEnable()
         {
@@ -18,8 +18,7 @@ namespace _2_GlobalEventList
         
         private void OnCoinCollected(Vector3 position)
         {
-            transform.position = position;
-            coinVFX.Play();
+            coinSFX.Play();
         }
     }
 }
