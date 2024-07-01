@@ -817,7 +817,7 @@ GameObject:
   - component: {fileID: 1795593851}
   - component: {fileID: 1795593854}
   m_Layer: 0
-  m_Name: CointUI2
+  m_Name: CoinUI2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
