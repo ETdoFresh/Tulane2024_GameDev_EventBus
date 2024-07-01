@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/1_UnityPersistentEvents/1_UnityPersistentEvents.unity
+    guid: 101546f02c114764a828b1e2dcd084ad
   m_configObjects: {}
