@@ -6,8 +6,8 @@ namespace _2_GlobalEventList
 {
     public class GlobalEventList : Singleton<GlobalEventList>
     {
-        public UnityEvent<Vector3> CoinCollected = new UnityEvent<Vector3>();
-        public UnityEvent PlayerDied = new UnityEvent();
-        public UnityEvent SomeOtherEventHappened = new UnityEvent();
+        public UnityEvent<Vector3> CoinCollected = new();
+        public UnityEvent PlayerDied = new();
+        public UnityEvent SomeOtherEventHappened = new();
     }
 }

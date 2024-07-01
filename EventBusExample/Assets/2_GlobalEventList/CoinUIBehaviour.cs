@@ -6,6 +6,7 @@ namespace _2_GlobalEventList
     public class CoinUIBehaviour : MonoBehaviour
     {
         [SerializeField] private TMP_Text coinText;
+        private int _collectedCoins;
 
         private void OnEnable()
         {
@@ -14,12 +15,12 @@ namespace _2_GlobalEventList
         
         private void OnDisable()
         {
-            GlobalEventList.Instance.CoinCollected.RemoveListener(OnCoinCollected);
+            GlobalEventList.Instance?.CoinCollected.RemoveListener(OnCoinCollected);
         }
 
         private void OnCoinCollected(Vector3 position)
         {
-            coinText.color = new Color(Random.value, Random.value, Random.value);
+            coinText.text = $"Coins: {++_collectedCoins}";
         }
     }
 }

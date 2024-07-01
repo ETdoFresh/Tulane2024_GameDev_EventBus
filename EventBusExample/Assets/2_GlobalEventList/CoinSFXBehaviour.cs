@@ -13,7 +13,7 @@ namespace _2_GlobalEventList
         
         private void OnDisable()
         {
-            GlobalEventList.Instance.CoinCollected.RemoveListener(OnCoinCollected);
+            GlobalEventList.Instance?.CoinCollected.RemoveListener(OnCoinCollected);
         }
         
         private void OnCoinCollected(Vector3 position)

@@ -22,7 +22,7 @@ namespace Utility
         
         protected virtual void Awake()
         {
-            if (_instance == null)
+            if (_instance == null || _instance == this)
             {
                 _instance = (T) this;
                 DontDestroyOnLoad(gameObject);
