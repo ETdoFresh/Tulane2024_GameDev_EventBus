@@ -7,7 +7,7 @@ namespace _3_EventBus
 {
     public static class EventBus
     {
-        private static readonly Dictionary<Type, List<UnityActionBase>> Events = new Dictionary<Type, List<UnityActionBase>>();
+        private static readonly Dictionary<Type, List<UnityActionBase>> Events = new();
         
         public static void AddListener<T>(UnityAction<T> listener)
         {
