@@ -2,15 +2,15 @@
 
 namespace _1_UnityPersistentEvents
 {
-    public class Coin2Behaviour : MonoBehaviour
+    public class CoinBehaviour1A : MonoBehaviour
     {
-        [SerializeField] private CoinUI2Behaviour coinUI2Behaviour;
+        [SerializeField] private CoinUIBehaviour1A coinUIBehaviour;
         
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Player"))
             {
-                coinUI2Behaviour.onCoinCollected.Invoke();
+                coinUIBehaviour.onCoinCollected.Invoke();
                 Destroy(gameObject);
             }
         }

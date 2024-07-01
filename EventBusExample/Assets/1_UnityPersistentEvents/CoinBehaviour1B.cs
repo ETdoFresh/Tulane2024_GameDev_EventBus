@@ -2,9 +2,9 @@
 
 namespace _1_UnityPersistentEvents
 {
-    public class CoinBehaviour : MonoBehaviour
+    public class CoinBehaviour1B : MonoBehaviour
     {
-        [SerializeField] private CoinUIBehaviour coinUIBehaviour;
+        [SerializeField] private CoinUIBehaviour1B coinUIBehaviour;
         
         private void OnTriggerEnter2D(Collider2D other)
         {
