@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _2_GlobalEventList
+namespace _3_EventBus
 {
     public class CoinSFXBehaviour : MonoBehaviour
     {
@@ -8,15 +8,15 @@ namespace _2_GlobalEventList
         
         private void OnEnable()
         {
-            GlobalEventList.Instance.CoinCollected.AddListener(OnCoinCollected);
+            EventBus.AddListener<CoinCollectedEvent>(OnCoinCollected);
         }
         
         private void OnDisable()
         {
-            GlobalEventList.Instance.CoinCollected.RemoveListener(OnCoinCollected);
+            EventBus.RemoveListener<CoinCollectedEvent>(OnCoinCollected);
         }
-        
-        private void OnCoinCollected(Vector3 position)
+
+        private void OnCoinCollected(CoinCollectedEvent coinCollectedEvent)
         {
             coinSFX.Play();
         }

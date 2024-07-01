@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 namespace _2_GlobalEventList
 {
-    public class CoinVFXBehaviour : MonoBehaviour
+    public class CoinUIBehaviour : MonoBehaviour
     {
-        [SerializeField] private ParticleSystem coinVFX;
-        
+        [SerializeField] private TMP_Text coinText;
+
         private void OnEnable()
         {
             GlobalEventList.Instance.CoinCollected.AddListener(OnCoinCollected);
@@ -15,11 +16,10 @@ namespace _2_GlobalEventList
         {
             GlobalEventList.Instance.CoinCollected.RemoveListener(OnCoinCollected);
         }
-        
+
         private void OnCoinCollected(Vector3 position)
         {
-            transform.position = position;
-            coinVFX.Play();
+            coinText.color = new Color(Random.value, Random.value, Random.value);
         }
     }
 }
