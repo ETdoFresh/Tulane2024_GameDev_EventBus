@@ -18,7 +18,7 @@ namespace _0_SimplePlatformer
             else if (horizontal > 0.1f) spriteRenderer.flipX = false;
         
             // jump input
-            var isStandingOrFalling = rigidbody2D.velocity.y < 0.01f;
+            var isStandingOrFalling = rigidbody2D.velocity.y < 0.1f;
             if (isStandingOrFalling) _queuedJump |= Input.GetButtonDown("Jump");
         }
 
@@ -28,11 +28,12 @@ namespace _0_SimplePlatformer
             rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * movementSpeed, rigidbody2D.velocity.y);
         
             // jump physics
-            if (_queuedJump && Mathf.Abs(rigidbody2D.velocity.y) < 0.1f)
+            var isStanding = Mathf.Abs(rigidbody2D.velocity.y) < 0.1f;
+            if (_queuedJump && isStanding)
             {
                 rigidbody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-                _queuedJump = false;
             }
+            _queuedJump = false;
         }
     }
 }
