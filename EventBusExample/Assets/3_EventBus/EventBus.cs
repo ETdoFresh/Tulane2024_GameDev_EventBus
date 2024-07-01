@@ -24,12 +24,12 @@ namespace _3_EventBus
             Events[eventType].Remove(listener);
         }
         
-        public static void Invoke<T>(T unityEvent)
+        public static void Invoke<T>(T eventInstance)
         {
             var eventType = typeof(T);
             if (!Events.ContainsKey(eventType)) return;
             foreach (UnityAction<T> listener in Events[eventType]) 
-                listener.Invoke(unityEvent);
+                listener.Invoke(eventInstance);
         }
     }
 }
