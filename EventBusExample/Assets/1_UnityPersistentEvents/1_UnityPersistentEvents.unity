@@ -5059,7 +5059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301188f0e31c46efb9ef953ec886dbc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinTextBehaviour: {fileID: 934800098}
+  coinUIBehaviour: {fileID: 934800098}
 --- !u!1 &393740516
 GameObject:
   m_ObjectHideFlags: 0
@@ -5214,7 +5214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b779db58868456d9ae78cfb0a4ed3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinText2Behaviour: {fileID: 1795593854}
+  coinUI2Behaviour: {fileID: 1795593854}
 --- !u!1 &934800094
 GameObject:
   m_ObjectHideFlags: 0
@@ -5228,7 +5228,7 @@ GameObject:
   - component: {fileID: 934800095}
   - component: {fileID: 934800098}
   m_Layer: 0
-  m_Name: CoinText
+  m_Name: CoinUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5741,7 +5741,7 @@ GameObject:
   - component: {fileID: 1795593851}
   - component: {fileID: 1795593854}
   m_Layer: 0
-  m_Name: CointText2
+  m_Name: CointUI2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

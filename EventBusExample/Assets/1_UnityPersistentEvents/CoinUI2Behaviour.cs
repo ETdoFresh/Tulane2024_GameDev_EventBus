@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace _1_UnityPersistentEvents
 {
-    public class CoinText2Behaviour : MonoBehaviour
+    public class CoinUI2Behaviour : MonoBehaviour
     {
         public UnityEvent onCoinCollected;
         [SerializeField] private TMP_Text coinText;
