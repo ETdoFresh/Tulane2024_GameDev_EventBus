@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine.Events;
-using UnityActionBase = System.Object;
+using UnityActions = System.Object;
 
 namespace _3_EventBus
 {
     public static class EventBus
     {
-        private static readonly Dictionary<Type, List<UnityActionBase>> Events = new();
+        private static readonly Dictionary<Type, List<UnityActions>> Events = new();
         
         public static void AddListener<T>(UnityAction<T> listener)
         {
             var eventType = typeof(T);
             if (!Events.ContainsKey(eventType)) 
-                Events[eventType] = new List<UnityActionBase>();
+                Events[eventType] = new List<UnityActions>();
             Events[eventType].Add(listener);
         }
         
