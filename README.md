@@ -1,4 +1,4 @@
-# Tulane 2024 Event Bus Guest Lecture
+# Tulane - Summer 2024 - Game Dev - Event Bus Guest Lecture
 
 ## Introduction
 
