@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using Utility;
 
 namespace _1_UnityPersistentEvents
 {
@@ -11,20 +12,12 @@ namespace _1_UnityPersistentEvents
 
         private void OnEnable()
         {
-#if UNITY_EDITOR
-            UnityEditor.Events.UnityEventTools.AddPersistentListener(onCoinCollected, OnCoinCollected);
-#else
-            onCoinCollected.AddListener(OnCoinCollected);
-#endif
+            onCoinCollected.AddPersistentListener(OnCoinCollected);
         }
         
         private void OnDisable()
         {
-#if UNITY_EDITOR
-            UnityEditor.Events.UnityEventTools.RemovePersistentListener(onCoinCollected, OnCoinCollected);
-#else
-            onCoinCollected.RemoveListener(OnCoinCollected);
-#endif
+            onCoinCollected.RemovePersistentListener(OnCoinCollected);
         }
         
         private void OnCoinCollected()
